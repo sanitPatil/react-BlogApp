@@ -1,12 +1,13 @@
 import { Account, Client, ID } from "appwrite";
+import conf from "../conf/conf";
 
 export class AuthService{
     client = new Client();
     account;
     constructor(){
         this.client
-            .setEndpoint()
-            .setProject();
+            .setEndpoint(conf.appwriteUrl)
+            .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
     }
 
@@ -50,7 +51,7 @@ export class AuthService{
         }
     }
 
-    
+
 }
 // console.log(`CreateAccountError::Auth.js::${error.message}`)
 const authService = new AuthService();
