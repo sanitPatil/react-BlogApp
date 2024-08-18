@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import appwriteService from '../Appwrite/config';
 import PostCard from "../Components/servicePages/PostCard";
+import { useSelector } from 'react-redux';
 
 function Home() {
     const [posts, setPosts] = useState([])
-
+    const isLogin = useSelector(state=> state.auth.loginStatus)
     useEffect(() => {
         appwriteService.getAllPost().then((posts) => {
             if (posts) {
@@ -20,7 +21,9 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to read posts
+                                {
+                                    isLogin ?"No post! Add Post":"Login to read posts"
+                                }
                             </h1>
                         </div>
                     </div>
