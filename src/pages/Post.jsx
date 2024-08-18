@@ -13,7 +13,7 @@ export default function Post() {
     const userData = useSelector((state) => state.auth.userData);
 
     const isAuthor = post && userData ? post.userID === userData.$id : false;
-    console.log(isAuthor);
+    
     
     useEffect(() => {
         if (slug) {
@@ -28,7 +28,7 @@ export default function Post() {
 
     const deletePost =async () => {
         try{
-            console.log("here");
+        
             
             await appwriteService.deletePost(post.$id).then((status) => {
                 if (status) {
@@ -55,13 +55,13 @@ export default function Post() {
                     
 
                     {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                        <div className="absolute right-12 bottom-6 p-2 m-2 ">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
+                                <button className="rounded-xl text-xl bg-slate-100 p-2 font-medium text-primary transition-all duration-200 hover:underline text-blue-500 m-2">
                                     Edit
-                                </Button>
+                                </button>
                             </Link>
-                            <button className="bg-red-500" onClick={deletePost}>
+                            <button className="rounded-xl text-xl bg-slate-100 p-2 font-medium text-primary transition-all duration-200 hover:underline text-blue-500" onClick={deletePost}>
                                 Delete
                             </button>
                         </div>

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import appwriteService from "../../Appwrite/config"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Container from "./../container/Container"
 function AddPost({post}) {
   const navigate = useNavigate();
   const userData = useSelector((state)=> state.auth.userData);
@@ -72,11 +73,15 @@ function AddPost({post}) {
     return ()=> subscription.unsubscribe();
   },[watch,setValue,slugTransform])
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <div>
+    <Container>
+      <h1 className='text-center text-4xl text-bold bg-blue-50 font-extrabold rounded p-2 m-2'>{post ?"Update Post":"Create Post"}</h1>
+      <form onSubmit={handleSubmit(submit)}>
+      <div className='grid  grid-cols-2 gap-4'>
+        <div className='justify-center'>
         <Input
         type="text"
         label="title"
+        placeholder="title for your post"
         {...register("title",{
           required:true
         })}
@@ -84,6 +89,8 @@ function AddPost({post}) {
         <Input
         type="text"
         label="slug"
+        disabled="true"
+        placeholder="slug id will generated"
         {...register("slug",{
           required:true
         })}
@@ -93,15 +100,20 @@ function AddPost({post}) {
           }
         }
         />
-        <RTE control={control} label="content: " name="content" defaultValue={getValues("content")}/>
-       
+        <RTE 
         
-        <Input
-                    label="Featured Image :"
-                    type="file"
-                    className="mb-4"
-                    accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
+        control={control} label="content: " name="content" defaultValue={getValues("content")}/>
+       
+        </div>
+        
+       <div className='text-center p-12'>
+       
+       <Input
+          label="Featured Image :"
+          type="file"
+          className=" text-xl "
+          accept="image/png, image/jpg, image/jpeg, image/gif"
+          {...register("image", { required: !post })}
                 />
                 {post && (
                     <div className="w-full mb-4">
@@ -112,23 +124,26 @@ function AddPost({post}) {
                         />
                     </div>
                 )}
-
-                 <Select
+       <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="text-xl font-bold p-2 m-2"
                     {...register("status", { required: true })}
                 />
-        <Button
+       <Button
         type='submit'
         bgColor='bg-blue-500'
-        className=''
+        className='w-[50%] mt-12 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
         >
-          {post ?"Update":"Save"}
+          {post ?"Update":"Submit"}
 
         </Button>
     </div>
+    
+       </div>
+       
     </form>
+    </Container>
   )
 }
 

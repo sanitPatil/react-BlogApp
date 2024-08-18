@@ -36,13 +36,13 @@ function Footer() {
     ]
   return (
     <Container>
-        <div className=' '>
+        
         <div className=''>
-           <ul className='flex justify-between  p-12 mr-4 ml-4 mt-28 mb-1 '>
+           <ul className='flex justify-between mt-10 mb-10'>
            {FooterItem && 
             FooterItem.map((item)=>(
                 <li key={item.name}
-                className=' font-bold border-b-2 hover:border-b-4'
+                className=''
                 >
                     <button>
                         {item.name}
@@ -52,7 +52,7 @@ function Footer() {
             }
            </ul>
         </div>
-    </div>
+    
     </Container>
   )
 }

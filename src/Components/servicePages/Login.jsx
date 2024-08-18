@@ -33,8 +33,8 @@ function Login() {
     <Container>
 
     <div className=' grid place-items-center z-10'>
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
-        <h2 class="text-2xl font-bold text-center text-gray-800">Sign In</h2>
+    <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
+        <h2 className="text-2xl font-bold text-center text-gray-800">Sign In</h2>
         <form onSubmit={handleSubmit(login)}>
             <Input
             type="email"

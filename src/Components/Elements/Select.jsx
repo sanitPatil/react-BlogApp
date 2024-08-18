@@ -8,8 +8,10 @@ const Select = React.forwardRef(function Select({
 },ref) {
     const id = useId();
   return (
-    <div>
-        {label && <label id={id}>{label}</label>}
+    <div className=''>
+        {label && <label
+        className='text-xl font-bold p-2 m-2'
+        id={id}>{label}</label>}
         <select
         id={id}
         {...props}

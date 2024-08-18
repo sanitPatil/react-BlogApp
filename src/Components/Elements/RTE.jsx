@@ -30,8 +30,10 @@ function RTE({
         'link', 'image'
       ];
   return (
-    <div>
-      {label && <label >{label}</label>}
+    <div className='
+    w-full mt-4
+    '>
+      {label && <label className='text-2xl font-bold p-2' >{label}</label>}
       <Controller
       name={name || "content"} 
       control={control}
@@ -43,6 +45,7 @@ function RTE({
           
           modules={modules}
           formats={formats} 
+          
           
           
           />

@@ -1,18 +1,16 @@
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
 import { Outlet } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import authService from "./Appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import './App.css'
-import Loader from "./Components/container/Loader"
 import Heading from "./Components/Header/Heading"
-
 function App() {
   const [loading,setLoading] = useState(true)
   const dispatch = useDispatch()
-
+  
   useEffect(()=>{
     authService.getCurrentLoginUser()
     .then((userData)=>{
@@ -25,15 +23,26 @@ function App() {
       setLoading(false)
     })
   },[])
-  return loading ?
-   <div><Loader/></div>
-  : 
+  
+  return(
+    <div>
+    {loading ? (
+      <div>
+        <Header/>
+        
+        <Footer/>
+      </div>
+    ):
     <div>
       <Header/>
-      <Heading/>
-      <Outlet/>
-      <Footer/>
+        <Heading/>
+        <Outlet/>
+        <Footer/>
     </div>
+    
+    }
+    </div>
+  ) 
   
 }
 
