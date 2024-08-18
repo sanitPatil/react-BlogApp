@@ -5,6 +5,8 @@ import authService from '../../Appwrite/auth';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/authSlice';
 import { useNavigate } from 'react-router-dom';
+import Container from "./../container/Container";
+import { Link } from 'react-router-dom';
 function Signup() {
     const {register,handleSubmit} = useForm();
     const dispatch = useDispatch();
@@ -25,9 +27,12 @@ function Signup() {
       }
     }
   return (
-    <div className='full'>
-        <Label>Create Account</Label>
-        <form onSubmit={handleSubmit(signup)}>
+    <Container>
+      <div className=' grid place-items-center z-10'>
+      <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
+          <h2 class="text-2xl font-bold text-center text-gray-800">Sign Up</h2>
+  
+        <form onSubmit={handleSubmit(signup)} className='mt-6'>
             <Input 
             type="text"
             label="Full Name"
@@ -38,8 +43,8 @@ function Signup() {
             />
             <Input
             type="email"
-            label="email" 
-            paceholder="Enter Your email"
+            label="Email" 
+            placeholder="Enter Your email"
             {...register("email",{
               required:true,
               validate:{
@@ -59,11 +64,28 @@ function Signup() {
             />
             <Button
             type='submit'
-            className='w-full'
+            className='w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
             >Create Account</Button>
         </form>
-    </div>
+      </div>
+      <p className="mt-2 text-center text-base text-black/60 text-xl">
+                    Already have an account?&nbsp;
+                    <Link
+                        to="/login"
+                        className="font-medium text-primary transition-all duration-200 hover:underline text-blue-600 "
+                    >
+                        Login
+                    </Link>
+        </p>
+        
+      </div>
+      
+    </Container>
+    
+
+
   )
 }
 
 export default Signup
+

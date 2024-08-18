@@ -1,0 +1,15 @@
+import React from 'react'
+import Container from "./../container/Container"
+function Heading() {
+  return (
+    <Container>
+        <div className='w-full h-[20%]'>
+            <h1 className='text-9xl text-gray-900 border-b-2 border-t-2 border-black/40 p-2  text-center font-extrabold'>
+            THE BLOG
+            </h1>
+        </div>
+    </Container>
+  )
+}
+
+export default Heading

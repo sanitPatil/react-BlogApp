@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '../container/Container'
 
 function Footer() {
     const FooterItem = [
@@ -34,19 +35,25 @@ function Footer() {
         }
     ]
   return (
-    <div className='w-full h-[10vh] '>
-        <div className='flex flex-wrap justify-between'>
-            {FooterItem && 
+    <Container>
+        <div className=' '>
+        <div className=''>
+           <ul className='flex justify-between  p-12 mr-4 ml-4 mt-28 mb-1 '>
+           {FooterItem && 
             FooterItem.map((item)=>(
-                <li key={item.name}>
+                <li key={item.name}
+                className=' font-bold border-b-2 hover:border-b-4'
+                >
                     <button>
                         {item.name}
                     </button>
                 </li>
             ))
             }
+           </ul>
         </div>
     </div>
+    </Container>
   )
 }
 

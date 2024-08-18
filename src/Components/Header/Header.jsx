@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
+import Container from '../container/Container'
 function Header() {
     const authStatus = useSelector((state)=>state.auth.loginStatus)
     const userData = useSelector((state)=> state.auth.userData)
@@ -34,18 +35,25 @@ function Header() {
         }
     ]
   return (
-    <div className='w-full'>
-        <div className='grid grid-cols-2'>
-            <div className='col-span-1'>
-                {/* Logo */}
+    <Container>
+       <div className='grid grid-cols-2 gap-2'>
+            <div>
+                <div className=''>
+                    <span className='hover:hover:text-black/50 p-2 rounded-2xl pt-1 text-xl font-bold'>{
+                    authStatus &&
+                    userData.name}</span>
+                </div>
             </div>
-            <div className='col-span-1'>
-                <ul className='flex justify-center justify-between'>
+            <div>
+            <div className='p-2 font-bold text-center '>
+                <ul className='flex flex-wrap justify-between '>
                 {
                     navItem.map((item)=>(
                         item.active ?
                         (
-                            <li key={item.name}>
+                            <li key={item.name}
+                            className='hover:text-black/50  border-b-2  '
+                            >
                                 <button
                                 onClick={()=>navigate(item.slug)}
                                 >
@@ -63,10 +71,14 @@ function Header() {
                         </li>
                     )
                 }
+                <button>
+                    Dark:Light
+                </button>
                 </ul>
             </div>
-        </div>
-    </div>
+            </div>
+       </div>
+    </Container>
   )
 }
 

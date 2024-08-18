@@ -5,6 +5,10 @@ import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import authService from "./Appwrite/auth"
 import { login, logout } from "./store/authSlice"
+import './App.css'
+import Loader from "./Components/container/Loader"
+import Heading from "./Components/Header/Heading"
+
 function App() {
   const [loading,setLoading] = useState(true)
   const dispatch = useDispatch()
@@ -22,10 +26,11 @@ function App() {
     })
   },[])
   return loading ?
-   <div> ...loading</div>
+   <div><Loader/></div>
   : 
     <div>
       <Header/>
+      <Heading/>
       <Outlet/>
       <Footer/>
     </div>

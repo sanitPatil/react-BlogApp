@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {login as authLogin} from "../../store/authSlice"
 import { Link } from 'react-router-dom';
+import Container from "./../container/Container"
 function Login() {
   const {register,handleSubmit} = useForm();
   const [error,setError] = useState("")
@@ -28,23 +29,17 @@ function Login() {
     }
   }
   return (
-    <div>
-        <h2>Sign In to Account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
-                    Don&apos;t have any account?&nbsp;
-                    <Link
-                        to="/signup"
-                        className="font-medium text-primary transition-all duration-200 hover:underline"
-                    >
-                        Sign Up
-                    </Link>
-        </p>
-        {error && <label>{error}</label>}
+    
+    <Container>
+
+    <div className=' grid place-items-center z-10'>
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
+        <h2 class="text-2xl font-bold text-center text-gray-800">Sign In</h2>
         <form onSubmit={handleSubmit(login)}>
             <Input
             type="email"
             label="email" 
-            paceholder="Enter Your email"
+            placeholder="Enter Your email"
             {...register("email",{
               required:true,
               validate:{
@@ -64,10 +59,25 @@ function Login() {
             />
             <Button
             type='submit'
-            className='w-full'
+            className='pt-4 mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
+
             >Sign In</Button>
         </form>
+      
     </div>
+    
+        <p className="mt-2 text-center text-base text-black/60">
+                    Don&apos;t have any account?&nbsp;
+                    <Link
+                        to="/signup"
+                        className="font-medium text-primary transition-all duration-200 hover:underline text-blue-500"
+                    >
+                        Sign Up
+                    </Link>
+        </p>
+    </div>
+    
+  </Container>
   )
 }
 
