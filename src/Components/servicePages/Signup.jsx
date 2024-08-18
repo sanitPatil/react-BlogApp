@@ -1,16 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import {Input, Button, Label} from "../../Components/Elements/index"
+import authService from '../../Appwrite/auth';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/authSlice';
+import { useNavigate } from 'react-router-dom';
 function Signup() {
-    const {register,onSubmit} = useForm();
+    const {register,handleSubmit} = useForm();
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const [errorMessage,setErrorMessage] = useState("")
+    const signup = async (data)=>{
+      try{
+        setErrorMessage("")
+        const newUser =await authService.createAccount(data);
+        if(newUser){
+          const userData = await authService.getCurrentLoginUser();
+          if(userData) dispatch(login(userData))
+            navigate('/')
+        }
 
-    const signup = ()=>{
-
+      }catch(error){
+        setErrorMessage(error.message)
+      }
     }
   return (
     <div className='full'>
         <Label>Create Account</Label>
-        <form onSubmit={onSubmit(signup)}>
+        <form onSubmit={handleSubmit(signup)}>
             <Input 
             type="text"
             label="Full Name"

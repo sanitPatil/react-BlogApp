@@ -28,7 +28,7 @@ const router = createBrowserRouter(
         element:<Signup/>
       },
       {
-        path:'/all-post',
+        path:'/all-posts',
         element:<AllPost/>
       },
       {
@@ -38,11 +38,6 @@ const router = createBrowserRouter(
       {
        path:'/edit-post/:slug',
        element:<EditPost/>
-      },
-      {
-        path:'/post-edit/:slug',
-        element:<EditPost/>
-
       },
       {
         path: "/post/:slug",

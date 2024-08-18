@@ -21,13 +21,15 @@ function App() {
       setLoading(false)
     })
   },[])
-  return (
+  return loading ?
+   <div> ...loading</div>
+  : 
     <div>
       <Header/>
       <Outlet/>
       <Footer/>
     </div>
-  )
+  
 }
 
 export default App

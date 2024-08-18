@@ -34,7 +34,7 @@ function Footer() {
         }
     ]
   return (
-    <div className='w-full h-[10vh] fixed bottom-1'>
+    <div className='w-full h-[10vh] '>
         <div className='flex flex-wrap justify-between'>
             {FooterItem && 
             FooterItem.map((item)=>(

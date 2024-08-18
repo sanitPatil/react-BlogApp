@@ -5,8 +5,9 @@ import appwriteService from "../../Appwrite/auth"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {login as authLogin} from "../../store/authSlice"
+import { Link } from 'react-router-dom';
 function Login() {
-  const {register,onSubmit} = useForm();
+  const {register,handleSubmit} = useForm();
   const [error,setError] = useState("")
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function Login() {
                     </Link>
         </p>
         {error && <label>{error}</label>}
-        <form onSubmit={onSubmit(login)}>
+        <form onSubmit={handleSubmit(login)}>
             <Input
             type="email"
             label="email" 

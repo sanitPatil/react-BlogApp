@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import AddPost from "../Components/servicePages/AddPost"
+import {AddPost as AddPostComponents} from "../Components/servicePages/index"
 import { useNavigate, useParams } from 'react-router-dom'
 import appwriteService from '../Appwrite/config'
+
 function AddPost() {
   const [post,setPosts] = useState(null)
   const {slug} = useParams()
@@ -22,7 +23,7 @@ function AddPost() {
   
   return post ?(
     <div>
-      <AddPost post={post}/>
+      <AddPostComponents post={post}/>
     </div>
   ):null
 }

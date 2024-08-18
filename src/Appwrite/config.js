@@ -51,7 +51,6 @@ export class Service{
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug
-
             )
         }catch(error){
             console.log(`GetPostError::config.js::${error.message}`);
@@ -113,9 +112,9 @@ export class Service{
             
         }
     }
-    async getFilePreview(fileId){
+    getFilePreview(fileId){
         try{
-            return await this.bucket.getFilePreview(
+            return this.bucket.getFilePreview(
                 conf.appwriteBucketId,
                 fileId,
 

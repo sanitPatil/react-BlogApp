@@ -94,11 +94,7 @@ function AddPost({post}) {
         }
         />
         <RTE control={control} label="content: " name="content" defaultValue={getValues("content")}/>
-        <Input
-        type="file"
-        className=''
-        accept="image/png, image/jpeg image/gif"  
-        />
+       
         
         <Input
                     label="Featured Image :"

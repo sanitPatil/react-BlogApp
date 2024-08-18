@@ -1,9 +1,9 @@
 import React from 'react'
-import AddPost from '../Components/servicePages/AddPost'
+import {AddPost as AddPostComponents} from '../Components/servicePages/index'
 function AddPost() {
   return (
     <div>
-      <AddPost />
+      <AddPostComponents />
     </div>
   )
 }

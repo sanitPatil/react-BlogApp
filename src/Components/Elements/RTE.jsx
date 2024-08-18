@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactQuill from 'react-quill';
+import QuillEditor from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Controller } from 'react-hook-form';
 
@@ -36,15 +36,15 @@ function RTE({
       name={name || "content"} 
       control={control}
       render={
-        ({field:{onChange}})=>(
-          <ReactQuill 
+        ({field})=>(
+          <QuillEditor
           theme="snow" 
           value={defaultValue} 
           
           modules={modules}
           formats={formats} 
           
-          onChange={onChange}
+          
           />
         )
       }
