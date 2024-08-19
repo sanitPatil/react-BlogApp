@@ -68,7 +68,7 @@ function Header() {
                         item.active ?
                         (
                             <li key={item.name}
-                            className='dark:hover:text-blue-500 duration-75  border-b-2  '
+                            className='dark:hover:text-blue-500 duration-75 text-blue-600  border-b-2  '
                             >
                                 <button
                                 onClick={()=>navigate(item.slug)}
@@ -82,7 +82,7 @@ function Header() {
                 }
                 {
                     authStatus && (
-                        <li>
+                        <li className='rounded-xl p-1 hover:bg-neutral-950 text-blue-600'>
                             <LogoutButton/>
                         </li>
                     )
