@@ -1,16 +1,16 @@
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
-import { Outlet } from "react-router-dom"
+import { json, Outlet } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import authService from "./Appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import './App.css'
 import Heading from "./Components/Header/Heading"
+
 function App() {
   const [loading,setLoading] = useState(true)
   const dispatch = useDispatch()
-  
   useEffect(()=>{
     authService.getCurrentLoginUser()
     .then((userData)=>{
@@ -24,8 +24,19 @@ function App() {
     })
   },[])
   
+  const themeMode = useSelector(state=> state.theme.mode);
+  //console.log(themeMode);
+  
+  useEffect(()=>{
+    document.querySelector('#root').classList.remove("light", "dark")
+    document.querySelector('#root').classList.add(themeMode)
+    
+   console.log(themeMode);
+   
+  },[themeMode])
+  
   return(
-    <div>
+    <div className="">
     {loading ? (
       <div>
         <Header/>
@@ -33,9 +44,9 @@ function App() {
         <Footer/>
       </div>
     ):
-    <div>
+    <div className="">
       <Header/>
-        <Heading/>
+        <Heading />
         <Outlet/>
         <Footer/>
     </div>

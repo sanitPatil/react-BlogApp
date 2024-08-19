@@ -8,7 +8,7 @@ const Select = React.forwardRef(function Select({
 },ref) {
     const id = useId();
   return (
-    <div className=''>
+    <div className='dark:bg-slate-900 dark:text-slate-50 '>
         {label && <label
         className='text-xl font-bold p-2 m-2'
         id={id}>{label}</label>}

@@ -28,9 +28,9 @@ function Signup() {
     }
   return (
     <Container>
-      <div className=' grid place-items-center z-10'>
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
-          <h2 className="text-2xl font-bold text-center text-gray-800">Sign Up</h2>
+      <div className=' grid place-items-center z-10 '>
+      <div className="bg-white dark:bg-slate-900 dark:text-slate-50 p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
+          <h2 className="text-2xl font-bold text-center dark:bg-slate-900 dark:text-slate-50 text-gray-800">Sign Up</h2>
   
         <form onSubmit={handleSubmit(signup)} className='mt-6'>
             <Input 
@@ -68,7 +68,7 @@ function Signup() {
             >Create Account</Button>
         </form>
       </div>
-      <p className="mt-2 text-center text-black/60 text-xl">
+      <p className="mt-2 text-center dark:bg-slate-900 dark:text-slate-50 text-black/60 text-xl">
                     Already have an account?&nbsp;
                     <Link
                         to="/login"

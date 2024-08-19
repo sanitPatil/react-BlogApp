@@ -22,7 +22,7 @@ function AddPost() {
   },[slug,navigate])
   
   return post ?(
-    <div>
+    <div className='dark:bg-slate-900 dark:text-slate-50'>
       <AddPostComponents post={post}/>
     </div>
   ):null

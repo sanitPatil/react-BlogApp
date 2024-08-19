@@ -74,9 +74,9 @@ function AddPost({post}) {
   },[watch,setValue,slugTransform])
   return (
     <Container>
-      <h1 className='text-center text-4xl text-bold bg-blue-50 font-extrabold rounded p-2 m-2'>{post ?"Update Post":"Create Post"}</h1>
+      <h1 className='text-center text-4xl text-bold  dark:bg-slate-900 dark:text-slate-50 font-extrabold rounded p-2 m-2 '>{post ?"Update Post":"Create Post"}</h1>
       <form onSubmit={handleSubmit(submit)}>
-      <div className='grid  grid-cols-2 gap-4'>
+      <div className='grid  grid-cols-2 gap-4 '>
         <div className='justify-center'>
         <Input
         type="text"
@@ -106,7 +106,7 @@ function AddPost({post}) {
        
         </div>
         
-       <div className='text-center p-12'>
+       <div className='text-center p-12 '>
        
        <Input
           label="Featured Image :"
@@ -133,7 +133,7 @@ function AddPost({post}) {
        <Button
         type='submit'
         bgColor='bg-blue-500'
-        className='w-[50%] mt-12 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
+        className='w-[50%] mt-12 bg-blue-600  text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
         >
           {post ?"Update":"Submit"}
 

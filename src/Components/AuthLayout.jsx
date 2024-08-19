@@ -17,7 +17,7 @@ function AuthLayout({children, authentication=true}) {
     },[authentication,navigate,authStatus])
   return loading ?
     <h1>Loading</h1>
-  :<div>
+  :<div className='dark:bg-slate-900 dark:text-slate-50'>
   {children}
 </div>
 }

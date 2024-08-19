@@ -1,12 +1,28 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import Container from '../container/Container'
+import { toggleTheme } from '../../store/themeSlice'
+import day from '/images/day-mode.png'
+import night from '/images/night.png'
+
 function Header() {
     const authStatus = useSelector((state)=>state.auth.loginStatus)
     const userData = useSelector((state)=> state.auth.userData)
     const navigate = useNavigate();
+    const [isLight,setIsLight] = useState(true);
+    const theme = useDispatch()
+    const updateTheme = ()=>{
+        setIsLight((prev)=>!prev)
+        if(isLight){
+            theme(toggleTheme("light"))
+        }else{
+            theme(toggleTheme("dark"))
+        }
+        
+    }
+
     const navItem = [
         {
             name: 'Home',
@@ -36,7 +52,7 @@ function Header() {
     ]
   return (
     <Container>
-       <div className='grid grid-cols-2 gap-2'>
+       <div className='grid grid-cols-2 gap-2 dark:bg-slate-900 dark:text-slate-50' >
             <div>
                 <div className=''>
                     <span className='hover:hover:text-black/50 p-2 rounded-2xl pt-1 text-xl font-bold'>{
@@ -52,7 +68,7 @@ function Header() {
                         item.active ?
                         (
                             <li key={item.name}
-                            className='hover:text-black/50  border-b-2  '
+                            className='dark:hover:text-blue-500 duration-75  border-b-2  '
                             >
                                 <button
                                 onClick={()=>navigate(item.slug)}
@@ -71,8 +87,16 @@ function Header() {
                         </li>
                     )
                 }
-                <button>
-                    Dark:Light
+                <button className='w-10 rounded-full border p-3'
+                onClick={updateTheme}
+                >
+                {
+                    isLight ?<div className='text-slate-200'>
+                        <img src={day} />
+                    </div>:<div className='text-black'>
+                    <img src={night} />
+                    </div>
+                }
                 </button>
                 </ul>
             </div>

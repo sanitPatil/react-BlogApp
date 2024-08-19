@@ -2,7 +2,7 @@ import React from 'react'
 import {Login as LoginComponents} from "../Components/servicePages/index"
 function Login() {
   return (
-    <div>
+    <div className='dark:bg-slate-900 dark:text-slate-50'>
         <LoginComponents/>
     </div>
   )
