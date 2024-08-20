@@ -21,7 +21,7 @@ walk into root directory
 1. npm i 
 2. npm run dev
 
-##### <b> <span style="color:#FFA500">NOTE:- 1. configure Appwrite For BAAS and Tailwind</span></b>
+##### <b> <span style="color:#FFA500">NOTE:- 1. configure Appwrite For BAAS and Tailwind for css</span></b>
 
 
 
