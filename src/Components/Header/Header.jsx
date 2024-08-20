@@ -55,7 +55,7 @@ function Header() {
        <div className='grid grid-cols-2 gap-2 dark:bg-slate-900 dark:text-slate-50' >
             <div>
                 <div className=''>
-                    <span className='hover:hover:text-black/50 p-2 rounded-2xl pt-1 text-xl font-bold'>{
+                    <span className='text-xl font-bold p-2 w-24 border-b-2  outline-none hover:bg-gray-900 dark:hover:bg-slate-100 rounded-xl text-blue-500'>{
                     authStatus &&
                     userData.name}</span>
                 </div>

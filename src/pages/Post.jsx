@@ -46,7 +46,7 @@ export default function Post() {
     return post ? (
         <div className="py-8 ">
             
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-full h-[80vh] flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
@@ -55,13 +55,13 @@ export default function Post() {
                     
 
                     {isAuthor && (
-                        <div className="absolute right-12 bottom-6 p-2 m-2 ">
+                        <div className="absolute right-12 bg-gradient-to-r from-gray-700 rounded-lg to-transparent top-1 p-2 m-1">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <button className="rounded-xl text-xl dark:bg-slate-900 dark:text-slate-50 bg-slate-100 p-2 font-medium text-primary transition-all duration-200 hover:underline text-blue-500 m-2">
+                                <button className="rounded-xl text-xl bg-slate-900 dark:text-slate-950 dark:bg-slate-100 p-2 font-medium text-primary transition-all duration-200 hover:underline text-blue-500 m-2">
                                     Edit
                                 </button>
                             </Link>
-                            <button className="rounded-xl text-xl dark:bg-slate-900 dark:text-slate-50 bg-slate-100 p-2 font-medium text-primary transition-all duration-200 hover:underline text-blue-500" onClick={deletePost}>
+                            <button className="rounded-xl text-xl bg-slate-900 dark:text-slate-950 dark:bg-slate-100 p-2 font-medium text-primary transition-all duration-200 hover:underline text-blue-500" onClick={deletePost}>
                                 Delete
                             </button>
                         </div>

@@ -1,16 +1,18 @@
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
-import { json, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import authService from "./Appwrite/auth"
 import { login, logout } from "./store/authSlice"
-import './App.css'
 import Heading from "./Components/Header/Heading"
-
+import { toggleTheme } from "./store/themeSlice"
+import './App.css'
 function App() {
   const [loading,setLoading] = useState(true)
   const dispatch = useDispatch()
+  const themeValue = useSelector(state=> state.theme.mode);
+
   useEffect(()=>{
     authService.getCurrentLoginUser()
     .then((userData)=>{
@@ -23,17 +25,27 @@ function App() {
       setLoading(false)
     })
   },[])
+
+  // THEME 
+  useEffect(()=>{
+    const storedTheme = localStorage.getItem("theme");
+    if(storedTheme){
+      dispatch(toggleTheme(storedTheme))
+    }
+  },[])
+
+  useEffect(()=>{
+    localStorage.setItem("theme",themeValue)
+  },[themeValue])
   
-  const themeMode = useSelector(state=> state.theme.mode);
-  //console.log(themeMode);
-  
+    
   useEffect(()=>{
     document.querySelector('#root').classList.remove("light", "dark")
-    document.querySelector('#root').classList.add(themeMode)
+    document.querySelector('#root').classList.add(themeValue)
     
-   console.log(themeMode);
+   console.log(themeValue);
    
-  },[themeMode])
+  },[themeValue])
   
   return(
     <div className="">
@@ -50,7 +62,6 @@ function App() {
         <Outlet/>
         <Footer/>
     </div>
-    
     }
     </div>
   ) 
