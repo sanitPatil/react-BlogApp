@@ -33,7 +33,16 @@ function Login() {
     <Container>
 
     <div className=' grid place-items-center z-10 dark:bg-slate-900 dark:text-slate-50'>
-    <div className="bg-slate-100 dark:bg-slate-900 dark:text-slate-50 p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
+    <div className="bg-slate-100 dark:bg-slate-900 dark:text-slate-50 p-14 rounded-lg shadow-lg w-full max-w-md z-10 border-4 dark:border-purple-800 ">
+    <p className="mt-2 text-center text-base text-black/60 dark:bg-slate-900 dark:text-slate-50">
+                    Don&apos;t have any account?&nbsp;
+                    <Link
+                        to="/signup"
+                        className="font-medium text-primary transition-all duration-200 hover:underline text-blue-500"
+                    >
+                        Sign Up
+                    </Link>
+        </p>
         <h2 className="text-2xl font-bold text-center dark:bg-slate-900 dark:text-slate-50 text-gray-900">Sign In</h2>
         <form onSubmit={handleSubmit(login)}>
             <Input
@@ -66,15 +75,7 @@ function Login() {
       
     </div>
     
-        <p className="mt-2 text-center text-base text-black/60 dark:bg-slate-900 dark:text-slate-50">
-                    Don&apos;t have any account?&nbsp;
-                    <Link
-                        to="/signup"
-                        className="font-medium text-primary transition-all duration-200 hover:underline text-blue-500"
-                    >
-                        Sign Up
-                    </Link>
-        </p>
+        
     </div>
     
   </Container>
