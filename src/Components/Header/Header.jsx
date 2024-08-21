@@ -11,16 +11,12 @@ function Header() {
     const authStatus = useSelector((state)=>state.auth.loginStatus)
     const userData = useSelector((state)=> state.auth.userData)
     const navigate = useNavigate();
-    const [isLight,setIsLight] = useState(true);
+    const [isLight,setIsLight] = useState(false);
     const theme = useDispatch()
+    
     const updateTheme = ()=>{
         setIsLight((prev)=>!prev)
-        if(isLight){
-            theme(toggleTheme("light"))
-        }else{
-            theme(toggleTheme("dark"))
-        }
-        
+        isLight ? theme(toggleTheme("light")):theme(toggleTheme("dark"))
     }
 
     const navItem = [
@@ -52,12 +48,14 @@ function Header() {
     ]
   return (
     <Container>
-       <div className='grid grid-cols-2 gap-2 dark:bg-slate-900 dark:text-slate-50' >
+       <div className='grid grid-cols-2 gap-2 dark:bg-slate-900 dark:text-slate-50 ' >
             <div>
                 <div className=''>
-                    <span className='text-xl font-bold p-2 w-24 border-b-2  outline-none hover:bg-gray-900 dark:hover:bg-slate-100 rounded-xl text-blue-500'>{
-                    authStatus &&
-                    userData.name}</span>
+                    {authStatus &&
+                    <span className='text-xl font-bold p-2 w-24 border-b-2  outline-none hover:bg-gray-900 dark:hover:bg-slate-100 rounded-xl text-blue-500'>
+                    {userData.name}
+                    </span>
+                    }
                 </div>
             </div>
             <div>

@@ -37,7 +37,7 @@ function Footer() {
   return (
     <Container>
         
-        <div className='dark:bg-slate-900 dark:text-slate-50'>
+        <div className='dark:bg-slate-900 dark:text-slate-50 border-t-2'>
            <ul className='flex justify-between mt-10 mb-10'>
            {FooterItem && 
             FooterItem.map((item)=>(

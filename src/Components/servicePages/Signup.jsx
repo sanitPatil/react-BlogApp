@@ -29,8 +29,18 @@ function Signup() {
   return (
     <Container>
       <div className=' grid place-items-center z-10 '>
-      <div className="bg-white dark:bg-slate-900 dark:text-slate-50 p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b ">
-          <h2 className="text-2xl font-bold text-center dark:bg-slate-900 dark:text-slate-50 text-gray-800">Sign Up</h2>
+        
+      <div className="bg-slate-100 dark:bg-slate-900 border-4 dark:border-purple-900 dark:text-slate-50 p-8 rounded-lg shadow-lg w-full max-w-md z-10 border-b">
+      <p className="mt-2 text-center dark:bg-slate-900 dark:text-slate-50 text-black/60 text-xl">
+                    Already have an account?&nbsp;
+                    <Link
+                        to="/login"
+                        className="font-medium text-primary transition-all duration-200 hover:underline text-blue-600 "
+                    >
+                        Login
+                    </Link>
+        </p>
+          <h2 className="text-2xl mt-2 font-bold text-center dark:bg-slate-900 dark:text-slate-50 text-gray-900">Sign Up</h2>
   
         <form onSubmit={handleSubmit(signup)} className='mt-6'>
             <Input 
@@ -56,7 +66,7 @@ function Signup() {
             />
             <Input
             type="password"
-            label="password"
+            label="Password"
             placeholder="Enter Your Password"
             {...register("password",{
               required:true,
@@ -64,19 +74,11 @@ function Signup() {
             />
             <Button
             type='submit'
-            className='w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
+            className='w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600'
             >Create Account</Button>
         </form>
       </div>
-      <p className="mt-2 text-center dark:bg-slate-900 dark:text-slate-50 text-black/60 text-xl">
-                    Already have an account?&nbsp;
-                    <Link
-                        to="/login"
-                        className="font-medium text-primary transition-all duration-200 hover:underline text-blue-600 "
-                    >
-                        Login
-                    </Link>
-        </p>
+      
         
       </div>
       
