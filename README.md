@@ -1,5 +1,5 @@
 
-# <center><b><span style="color:#FF4500">Blog Application</span></b></center>
+# <b><span style="color:#FF4500;">Blog Application</span></b>
 This repository contains a feature-rich blog application built with modern web technologies. The app leverages React.js for a responsive and dynamic frontend, Appwrite as the backend as a service (BaaS) for managing user authentication, database, and storage, and Redux.js for efficient state management across the application.
 
 ## <span style="color:#1E90FF">Key Features:</span>
