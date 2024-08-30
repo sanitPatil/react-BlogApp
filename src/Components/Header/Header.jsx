@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import Container from '../container/Container'
 import { toggleTheme } from '../../store/themeSlice'
@@ -10,15 +10,22 @@ import night from '/images/night.png'
 function Header() {
     const authStatus = useSelector((state)=>state.auth.loginStatus)
     const userData = useSelector((state)=> state.auth.userData)
+    const [light,setLight] = useState(true)
     const navigate = useNavigate();
-    const [isLight,setIsLight] = useState(false);
     const theme = useDispatch()
+    //console.log(light);
     
+     
     const updateTheme = ()=>{
-        setIsLight((prev)=>!prev)
-        isLight ? theme(toggleTheme("light")):theme(toggleTheme("dark"))
+        if(light){
+            theme(toggleTheme('light'))
+        }else{
+            theme(toggleTheme('dark'))
+        }
     }
-
+    useEffect(()=>{
+        updateTheme();
+    },[light])
     const navItem = [
         {
             name: 'Home',
@@ -48,58 +55,53 @@ function Header() {
     ]
   return (
     <Container>
-       <div className='grid grid-cols-2 gap-2 dark:bg-slate-900 dark:text-slate-50 ' >
-            <div>
-                <div className=''>
-                    {authStatus &&
-                    <span className='text-xl font-bold p-2 w-24 border-b-2  outline-none hover:bg-gray-900 dark:hover:bg-slate-100 rounded-xl text-blue-500'>
-                    {userData.name}
-                    </span>
+      <div className='font-bold flex justify-between'>
+        <span className=' rounded border-blue-800 relative group'>
+            {authStatus && 
+        <h1 className=' cursor-pointer rounded-full border-2 p-2 border-purple-900'>
+        {userData.name }  
+        <div className='absolute hidden group-hover:block w-28 text-white  rounded'>
+        {
+        authStatus && (
+            <div className=' bg-neutral-200 border-none rounded text-center'>
+                <button
+                onClick={()=> navigate('/update-profile')}
+                 className='p-1 w-full text-blue-900 font-bold hover:text-red-900 hover:bg-gray-900 '>Profile</button>
+               <LogoutButton className='p-1 w-full text-blue-900 font-bold hover:text-red-900  hover:bg-gray-900 '/>
+            </div>
+            )
+        }
+           
+        </div>
+        
+
+        </h1> 
+        
+        }
+        </span>
+        <div className=''>
+            <ul className='flex'>
+                {navItem.map((nav)=>(
+                    nav.active ? (
+                        <li className='p-2 pr-4  rounded hover:border-b-2 border-blue-800'><Link to={nav.slug}>{nav.name}</Link></li>
+                    ):null
+                ))}
+                
+                <div className='flex justify-center rounded-full w-12 hover:border bottom-b-2'>
+                <button
+                onClick={()=>setLight((prev)=> !prev)}
+                >   {light ? 
+                    
+                   <img src={night}  className='w-6 text-center'/>:
+                    <img src={day}  className='w-6'/>
                     }
-                </div>
-            </div>
-            <div>
-            <div className='p-2 font-bold text-center '>
-                <ul className='flex flex-wrap justify-between '>
-                {
-                    navItem.map((item)=>(
-                        item.active ?
-                        (
-                            <li key={item.name}
-                            className='dark:hover:text-blue-500 duration-75 text-blue-600  border-b-2  '
-                            >
-                                <button
-                                onClick={()=>navigate(item.slug)}
-                                >
-                                    {item.name}
-                                </button>
-                            </li>
-                        )
-                        :null
-                    ))
-                }
-                {
-                    authStatus && (
-                        <li className='rounded-xl p-1 hover:bg-neutral-950 text-blue-600'>
-                            <LogoutButton/>
-                        </li>
-                    )
-                }
-                <button className='w-10 rounded-full border p-3'
-                onClick={updateTheme}
-                >
-                {
-                    isLight ?<div className='text-slate-200'>
-                        <img src={day} />
-                    </div>:<div className='text-black'>
-                    <img src={night} />
-                    </div>
-                }
+                    
+        
                 </button>
-                </ul>
-            </div>
-            </div>
-       </div>
+                </div>
+            </ul>
+        </div>
+      </div>
     </Container>
   )
 }

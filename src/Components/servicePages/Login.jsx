@@ -8,12 +8,11 @@ import {login as authLogin} from "../../store/authSlice"
 import { Link } from 'react-router-dom';
 import Container from "./../container/Container"
 function Login() {
-  const {register,handleSubmit} = useForm();
-  const [error,setError] = useState("")
+  const {register,handleSubmit,reset} = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const login =async (data)=>{
-    setError("")
     try{
       const session = await appwriteService.login(data);
       
@@ -23,11 +22,12 @@ function Login() {
         navigate('/')
       }
     }catch(error){
-      setError(error.message)
-      console.error(error.message);
-      
+      console.log(error.message);
     }
+    reset();
   }
+  
+  
   return (
     
     <Container>

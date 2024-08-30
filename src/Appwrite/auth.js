@@ -52,7 +52,6 @@ export class AuthService{
         }
     }
 
-
 }
 // console.log(`CreateAccountError::Auth.js::${error.message}`)
 const authService = new AuthService();

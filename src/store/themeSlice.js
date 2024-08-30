@@ -9,6 +9,7 @@ const themeSlice = createSlice({
     initialState,
     reducers:{
         toggleTheme:(state,action)=>{
+            //console.log(action.payload);
             state.mode = action.payload;
         }
     }

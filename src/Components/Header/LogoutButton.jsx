@@ -3,7 +3,10 @@ import {logout} from "../../store/authSlice"
 import authService from "../../Appwrite/auth"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-function LogoutButton() {
+function LogoutButton({
+  className='',
+  props
+}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = async ()=>{
@@ -17,13 +20,15 @@ function LogoutButton() {
     
   }
   return (
-    <div className=''>
-      <button className=''
+    
+      <button
+      className={`${className}`}
+      {...props}
       onClick={handleLogout}
       >
         Log out
       </button>
-    </div>
+  
   )
 }
 
