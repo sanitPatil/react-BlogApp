@@ -83,7 +83,9 @@ function Header() {
             <ul className='flex'>
                 {navItem.map((nav)=>(
                     nav.active ? (
-                        <li className='p-2 pr-4  rounded hover:border-b-2 border-blue-800'><Link to={nav.slug}>{nav.name}</Link></li>
+                        <li 
+                        key={nav.name}
+                        className='p-2 pr-4  rounded hover:border-b-2 border-blue-800'><Link to={nav.slug}>{nav.name}</Link></li>
                     ):null
                 ))}
                 

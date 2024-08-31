@@ -42,7 +42,7 @@ function RTE({
           <QuillEditor
           theme="snow" 
           value={defaultValue} 
-          
+          className='bg-white text-black'
           modules={modules}
           formats={formats} 
           

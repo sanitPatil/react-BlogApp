@@ -9,7 +9,7 @@ import {
   AddPost, AllPost, Post, Login, Signup, EditPost, Home
 } from "./pages/index.js"
 import {AuthLayout} from "./index.js"
-
+import UpdateProfile from './Components/UpdateProfile.jsx'
 const router = createBrowserRouter(
   [{
     path:'/',
@@ -69,7 +69,14 @@ const router = createBrowserRouter(
           </AuthLayout>
         )
     },
-      
+    {
+      path:'/update-profile',
+      element:(
+        <AuthLayout authentication>
+          <UpdateProfile/>
+        </AuthLayout>
+      )
+    }, 
     ]
     }
   ]

@@ -51,6 +51,44 @@ export class AuthService{
             console.log(`getCurrentUserError::Auth.js::${error.message}`)
         }
     }
+    async updateEmail({email,password}){
+        //console.log(email,password);
+        try{
+            const res = await this.account.updateEmail(email,password);
+            if(res){
+                return res;
+            }
+        }catch(error){
+            console.log(`update-User-Email::Auth.js::${error.message}`)
+        }
+    }
+
+    async updateName({name}){
+        console.log(name);
+        
+        try{
+            const res = await this.account.updateName(name);
+            if(res){
+                return res;
+            }
+        }catch(error){
+            console.log(`update-User-Name::Auth.js::${error.message}`)
+        }
+    }
+
+    async updatePassowrd({newPassword,oldPassword}){
+        try{
+            const res = await this.account.updatePassword(
+                newPassword,
+                oldPassword
+            )
+            if(res){
+                return res;
+            }
+        }catch(error){
+            console.log(`update-User-Password::Auth.js::${error.message}`)
+        }
+    }
 
 }
 // console.log(`CreateAccountError::Auth.js::${error.message}`)

@@ -8,7 +8,7 @@ const Select = React.forwardRef(function Select({
 },ref) {
     const id = useId();
   return (
-    <div className='dark:bg-slate-900 dark:text-slate-50 '>
+    <div className=' dark:text-slate-50 '>
         {label && <label
         className='text-xl font-bold p-2 m-2'
         id={id}>{label}</label>}
@@ -16,7 +16,7 @@ const Select = React.forwardRef(function Select({
         id={id}
         {...props}
         ref={ref}
-        className={`${className}`}
+        className={`${className} dark:bg-black rounded`}
         >
             {options?.map((option)=>(
                 <option

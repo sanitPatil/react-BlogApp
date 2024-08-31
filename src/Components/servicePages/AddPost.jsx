@@ -80,6 +80,7 @@ function AddPost({post}) {
         <div className='justify-center'>
         <Input
         type="text"
+        
         label="title"
         placeholder="title for your post"
         {...register("title",{
@@ -89,7 +90,7 @@ function AddPost({post}) {
         <Input
         type="text"
         label="slug"
-        disabled="true"
+        disabled={true}
         placeholder="slug id will generated"
         {...register("slug",{
           required:true
